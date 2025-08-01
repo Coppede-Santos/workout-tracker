@@ -1,49 +1,45 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMContentLoaded
+
     const workoutRoutineDiv = document.getElementById('workout-routine');
 
-    // Define your workout routine here
-   // ... (código HTML y CSS se mantienen igual) ...
-
-// Define tu rutina de entrenamiento aquí (asegúrate de que los nombres de los ejercicios
-// coincidan exactamente con las cabeceras de tu Google Sheet)
-const workoutDays = [
-    {
-        day: "Día 1: Pecho y Tríceps",
-        exercises: [
-            { name: "Press de Banca" },
-            { name: "Press Inclinado con Mancuernas" },
-            { name: "Aperturas con Mancuernas" },
-            { name: "Fondos en Paralelas (o máquina)" },
-            { name: "Extensión de Tríceps con Barra Z" }
-        ]
-    },
-    {
-        day: "Día 2: Espalda y Bíceps",
-        exercises: [
-            { name: "Dominadas (o Jalón al Pecho)" },
-            { name: "Remo con Barra" },
-            { name: "Remo con Mancuerna a una mano" },
-            { name: "Peso Muerto Rumano" },
-            { name: "Curl de Bíceps con Barra" },
-            { name: "Curl de Martillo con Mancuernas" }
-        ]
-    },
-    {
-        day: "Día 3: Piernas y Hombros",
-        exercises: [
-            { name: "Sentadilla" },
-            { name: "Prensa de Piernas" },
-            { name: "Extensiones de Cuádriceps" },
-            { name: "Curl Femoral Tumbado" },
-            { name: "Press Militar con Mancuernas" },
-            { name: "Elevaciones Laterales" }
-        ]
-    }
-    // Puedes añadir más días según tu rutina
-];
-
-document.addEventListener('DOMContentLoaded', () => {
-    const workoutRoutineDiv = document.getElementById('workout-routine');
+    // Define tu rutina de entrenamiento aquí (asegúrate de que los nombres de los ejercicios
+    // coincidan exactamente con las cabeceras de tu Google Sheet)
+    const workoutDays = [
+        {
+            day: "Día 1: Pecho y Tríceps",
+            exercises: [
+                { name: "Press de Banca" },
+                { name: "Press Inclinado con Mancuernas" },
+                { name: "Aperturas con Mancuernas" },
+                { name: "Fondos en Paralelas (o máquina)" },
+                { name: "Extensión de Tríceps con Barra Z" }
+            ]
+        },
+        {
+            day: "Día 2: Espalda y Bíceps",
+            exercises: [
+                { name: "Dominadas (o Jalón al Pecho)" },
+                { name: "Remo con Barra" },
+                { name: "Remo con Mancuerna a una mano" },
+                { name: "Peso Muerto Rumano" },
+                { name: "Curl de Bíceps con Barra" },
+                { name: "Curl de Martillo con Mancuernas" }
+            ]
+        }
+        ,
+        {
+            day: "Día 3: Piernas y Hombros",
+            exercises: [
+                { name: "Sentadilla" },
+                { name: "Prensa de Piernas" },
+                { name: "Extensiones de Cuádriceps" },
+                { name: "Curl Femoral Tumbado" },
+                { name: "Press Militar con Mancuernas" },
+                { name: "Elevaciones Laterales" }
+            ]
+        }
+        // Puedes añadir más días según tu rutina
+    ];
 
     // **IMPORTANTE: PEGA AQUÍ LA URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT**
     // Debe verse algo como: 'https://script.google.com/macros/s/AKfyc.../exec'
@@ -139,4 +135,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial render
     renderWorkoutRoutine();
-});
+}); // Cierre del único DOMContentLoaded
