@@ -1,9 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMContentLoaded
-
+document.addEventListener('DOMContentLoaded', () => {
     const workoutRoutineDiv = document.getElementById('workout-routine');
 
-    // Define tu rutina de entrenamiento aquí (asegúrate de que los nombres de los ejercicios
-    // coincidan exactamente con las cabeceras de tu Google Sheet)
     const workoutDays = [
         {
             day: "Día 1: Pecho y Tríceps",
@@ -25,8 +22,7 @@ document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMCont
                 { name: "Curl de Bíceps con Barra" },
                 { name: "Curl de Martillo con Mancuernas" }
             ]
-        }
-        ,
+        },
         {
             day: "Día 3: Piernas y Hombros",
             exercises: [
@@ -38,16 +34,12 @@ document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMCont
                 { name: "Elevaciones Laterales" }
             ]
         }
-        // Puedes añadir más días según tu rutina
     ];
 
-    // **IMPORTANTE: PEGA AQUÍ LA URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT**
-    // Debe verse algo como: 'https://script.google.com/macros/s/AKfyc.../exec'
-    const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyE7CR8qTxZRTWdDsc2zgQkx8tRVstyE4t0jtjjrdAx21t82vrWq5XltYXXaFpPR7SI3w/exec'; // <--- ¡Pega tu URL aquí!
+    const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyE7CR8qTxZRTWdDsc2zgQkx8tRVstyE4t0jtjjrdAx21t82vrWq5XltYXXaFpPR7SI3w/exec';
 
-    // Function to render workout days (este código se mantiene igual)
     function renderWorkoutRoutine() {
-        workoutRoutineDiv.innerHTML = ''; // Clear previous content
+        workoutRoutineDiv.innerHTML = '';
 
         workoutDays.forEach((dayData, dayIndex) => {
             const daySection = document.createElement('div');
@@ -74,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMCont
         });
     }
 
-    // --- ¡LA FUNCIÓN saveDayWeights ES DONDE OCURRE EL CAMBIO PRINCIPAL! ---
     function saveDayWeights(dayIndex) {
         const dayData = workoutDays[dayIndex];
         const weightsToSave = {};
@@ -94,10 +85,9 @@ document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMCont
         });
 
         if (!allWeightsEntered) {
-            return; // Sale de la función si no todos los pesos son válidos
+            return;
         }
 
-        // Enviar los datos al backend (Google Apps Script Web App)
         fetch(GOOGLE_APPS_SCRIPT_WEB_APP_URL, {
             method: 'POST',
             headers: {
@@ -109,18 +99,15 @@ document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMCont
             })
         })
         .then(response => {
-            // Verifica si la respuesta es exitosa (código 2xx)
             if (!response.ok) {
-                // Si hay un error HTTP, lanza una excepción
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return response.json(); // Parsea la respuesta como JSON
+            return response.json();
         })
         .then(data => {
             if (data.success) {
                 alert(data.message);
-                // Opcional: limpiar los campos de entrada después de guardar exitosamente
-                dayData.exercises.forEach((exercise, exerciseIndex) => {
+                dayData.exercises.forEach((_, exerciseIndex) => {
                     document.getElementById(`day${dayIndex}-exercise${exerciseIndex}`).value = '';
                 });
             } else {
@@ -133,6 +120,5 @@ document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMCont
         });
     }
 
-    // Initial render
     renderWorkoutRoutine();
-}); // Cierre del único DOMContentLoaded // Cierre del único DOMContentLoaded
+});
