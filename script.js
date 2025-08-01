@@ -135,4 +135,4 @@ document.addEventListener('DOMContentLoaded', () => { // Primer y único DOMCont
 
     // Initial render
     renderWorkoutRoutine();
-}); // Cierre del único DOMContentLoaded
+}); // Cierre del único DOMContentLoaded // Cierre del único DOMContentLoaded
