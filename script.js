@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyE7CR8qTxZRTWdDsc2zgQkx8tRVstyE4t0jtjjrdAx21t82vrWq5XltYXXaFpPR7SI3w/exec';
+    const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz5QsljMqbysjandhMohmPFWAQUW_6SN2ayqSQGjFEMF_YsabGykpTBqgJxMUToMfxFWQ/exec';
 
     function renderWorkoutRoutine() {
         workoutRoutineDiv.innerHTML = '';
